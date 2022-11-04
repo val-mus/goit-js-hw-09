@@ -3,7 +3,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 let getEl = selector => document.querySelector(selector);
-startBtn = getEl('button[data-start]');
+startBtn = getEl('[data-start]');
 daysValue = getEl('[data-days]');
 hoursValue = getEl('[data-hours]');
 minutesValue = getEl('[data-minutes]');

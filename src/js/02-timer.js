@@ -2,16 +2,6 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-let getEl = selector => document.querySelector(selector);
-
-startBtn = getEl('button');
-daysValue = getEl('[data-days]');
-hoursValue = getEl('[data-hours]');
-minutesValue = getEl('[data-minutes]');
-secondsValue = getEl('[data-seconds]');
-
-startBtn.setAttribute('disabled', true);
-
 Notiflix.Notify.init({
   width: '280px',
   position: 'left-top',
@@ -19,6 +9,16 @@ Notiflix.Notify.init({
   opacity: 1,
   // ...
 });
+
+let getEl = selector => document.querySelector(selector);
+
+startBtn = getEl('[data-start]');
+daysValue = getEl('[data-days]');
+hoursValue = getEl('[data-hours]');
+minutesValue = getEl('[data-minutes]');
+secondsValue = getEl('[data-seconds]');
+
+startBtn.setAttribute('disabled', true);
 
 const options = {
   enableTime: true,
@@ -34,66 +34,6 @@ const options = {
     Notiflix.Notify.failure('Please choose a date in the future');
   },
 };
-
-// Перший варіант (з об'єктом). Початок ===================================================================
-// const InputCalendar = flatpickr('#datetime-picker', options);
-
-// const countDownTimer = {
-//   timerId: null,
-//   isActive: false,
-
-//   start() {
-//     if (this.isActive) {
-//       return;
-//     }
-//     this.isActive = true;
-
-//     const startTime = InputCalendar.selectedDates[0].getTime();
-
-//     setInterval(() => {
-//       const currentTime = Date.now();
-//       const deltaTime = startTime - currentTime;
-//       const timerValue = convertMs(deltaTime);
-
-//       updateCountDownFace(timerValue);
-//     }, 1000);
-//   },
-// };
-
-// startBtn.addEventListener('click', countDownTimer.start.bind(countDownTimer));
-
-// function adjustTimeValue(v) {
-//   return String(v).padStart(2, '0');
-// }
-
-// function updateCountDownFace({ days, hours, minutes, seconds }) {
-//   daysValue.textContent = days;
-//   hoursValue.textContent = hours;
-//   minutesValue.textContent = minutes;
-//   secondsValue.textContent = seconds;
-// }
-
-// function convertMs(ms) {
-//   // Number of milliseconds per unit of time
-//   const second = 1000;
-//   const minute = second * 60;
-//   const hour = minute * 60;
-//   const day = hour * 24;
-
-//   // Remaining days
-//   const days = adjustTimeValue(Math.floor(ms / day));
-//   // Remaining hours
-//   const hours = adjustTimeValue(Math.floor((ms % day) / hour));
-//   // Remaining minutes
-//   const minutes = adjustTimeValue(Math.floor(((ms % day) % hour) / minute));
-//   // Remaining seconds
-//   const seconds = adjustTimeValue(
-//     Math.floor((((ms % day) % hour) % minute) / second)
-//   );
-
-//   return { days, hours, minutes, seconds };
-// }
-// Перший варіант (з об'єктом). Кінець. ========================================================
 
 const InputCalendar = flatpickr('#datetime-picker', options);
 
@@ -162,3 +102,63 @@ function updateCountDownFace({ days, hours, minutes, seconds }) {
 }
 
 startBtn.addEventListener('click', countDownTimer.start.bind(countDownTimer));
+
+// Перший варіант (з об'єктом). Початок ===================================================================
+// const InputCalendar = flatpickr('#datetime-picker', options);
+
+// const countDownTimer = {
+//   timerId: null,
+//   isActive: false,
+
+//   start() {
+//     if (this.isActive) {
+//       return;
+//     }
+//     this.isActive = true;
+
+//     const startTime = InputCalendar.selectedDates[0].getTime();
+
+//     setInterval(() => {
+//       const currentTime = Date.now();
+//       const deltaTime = startTime - currentTime;
+//       const timerValue = convertMs(deltaTime);
+
+//       updateCountDownFace(timerValue);
+//     }, 1000);
+//   },
+// };
+
+// startBtn.addEventListener('click', countDownTimer.start.bind(countDownTimer));
+
+// function adjustTimeValue(v) {
+//   return String(v).padStart(2, '0');
+// }
+
+// function updateCountDownFace({ days, hours, minutes, seconds }) {
+//   daysValue.textContent = days;
+//   hoursValue.textContent = hours;
+//   minutesValue.textContent = minutes;
+//   secondsValue.textContent = seconds;
+// }
+
+// function convertMs(ms) {
+//   // Number of milliseconds per unit of time
+//   const second = 1000;
+//   const minute = second * 60;
+//   const hour = minute * 60;
+//   const day = hour * 24;
+
+//   // Remaining days
+//   const days = adjustTimeValue(Math.floor(ms / day));
+//   // Remaining hours
+//   const hours = adjustTimeValue(Math.floor((ms % day) / hour));
+//   // Remaining minutes
+//   const minutes = adjustTimeValue(Math.floor(((ms % day) % hour) / minute));
+//   // Remaining seconds
+//   const seconds = adjustTimeValue(
+//     Math.floor((((ms % day) % hour) % minute) / second)
+//   );
+
+//   return { days, hours, minutes, seconds };
+// }
+// Перший варіант (з об'єктом). Кінець. ========================================================

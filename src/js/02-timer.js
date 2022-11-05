@@ -12,11 +12,11 @@ Notiflix.Notify.init({
 
 let getEl = selector => document.querySelector(selector);
 
-startBtn = getEl('[data-start]');
-daysValue = getEl('[data-days]');
-hoursValue = getEl('[data-hours]');
-minutesValue = getEl('[data-minutes]');
-secondsValue = getEl('[data-seconds]');
+const startBtn = getEl('[data-start]');
+const daysValue = getEl('[data-days]');
+const hoursValue = getEl('[data-hours]');
+const minutesValue = getEl('[data-minutes]');
+const secondsValue = getEl('[data-seconds]');
 
 startBtn.setAttribute('disabled', true);
 

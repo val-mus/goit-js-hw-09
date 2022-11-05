@@ -5,6 +5,7 @@ const delay = getEl('[name=delay]');
 const step = getEl('[name=step]');
 const amount = getEl('[name=amount]');
 const form = getEl('.form');
+const submitBtn = getEl('[type=submit]');
 
 Notiflix.Notify.init({
   width: '280px',
@@ -31,9 +32,11 @@ function onFormSubmit(e) {
   
   let promiseDelay = Number(delay.value);
   let promisePosition = 0;
+  let promiseStep = step.value;
+  let stepAmount = Number(amount.value);
 
   let intervalId = setInterval(() => {
-    if (promisePosition === Number(amount.value)) {
+    if (promisePosition === stepAmount) {
       clearInterval(intervalId);
       return;
     }
@@ -47,8 +50,9 @@ function onFormSubmit(e) {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position + 1} in ${delay}ms`
         );
-      });
+      })
+      .finally(form.reset());
     promisePosition += 1;
-    promiseDelay += Number(step.value);
-  }, step.value);
+    promiseDelay += Number(promiseStep);
+  }, promiseStep);
 }

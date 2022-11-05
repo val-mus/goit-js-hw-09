@@ -5,7 +5,6 @@ const delay = getEl('[name=delay]');
 const step = getEl('[name=step]');
 const amount = getEl('[name=amount]');
 const form = getEl('.form');
-const submitBtn = getEl('[type=submit]');
 
 Notiflix.Notify.init({
   width: '280px',
@@ -29,7 +28,7 @@ form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
   e.preventDefault();
-  
+
   let promiseDelay = Number(delay.value);
   let promisePosition = 0;
   let promiseStep = step.value;

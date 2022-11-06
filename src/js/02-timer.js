@@ -51,12 +51,16 @@ class CountDownTimer {
     }
     const startTime = InputCalendar.selectedDates[0].getTime();
     this.isActive = true;
+
     this.timerId = setInterval(() => {
       const currentTime = Date.now();
-
       const deltaTime = startTime - currentTime;
-
       const timerValue = this.convertMs(deltaTime);
+
+      if (deltaTime < 1000) {
+        clearInterval(this.timerId);
+        this.isActive = false;
+      }
 
       this.onTick(timerValue);
     }, 1000);

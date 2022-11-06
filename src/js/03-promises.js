@@ -34,6 +34,8 @@ function onFormSubmit(e) {
   let promiseStep = step.value;
   let stepAmount = Number(amount.value);
 
+  form.reset();
+
   let intervalId = setInterval(() => {
     if (promisePosition === stepAmount) {
       clearInterval(intervalId);
@@ -49,8 +51,8 @@ function onFormSubmit(e) {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position + 1} in ${delay}ms`
         );
-      })
-      .finally(form.reset());
+      });
+
     promisePosition += 1;
     promiseDelay += Number(promiseStep);
   }, promiseStep);
